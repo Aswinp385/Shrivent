@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.75"
+        android:background="@color/dark_primary">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitEnd"
+            android:src="@drawable/signup_bg" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvBack"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTint="@android:color/white"
+                android:text="Back"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="25dp"
+            android:text="Create New Account"
+            android:textColor="@android:color/white"
+            android:textSize="22dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_mail"
+                    android:tint="@android:color/black" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_user"
+                    android:tint="@android:color/black" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/edtmobilNum"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Mobile Number"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:id="@+id/passwordImg"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_lock"
+                    android:tint="@android:color/black" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edtPwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:maxLength="10"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_lock"
+                    android:tint="@android:color/black" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edtConPwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:maxLength="10"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnSignup"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/custom_btn_primary"
+                android:text="Register"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
