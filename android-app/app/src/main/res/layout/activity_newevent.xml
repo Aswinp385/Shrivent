@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary"
+        >
+
+        <RelativeLayout
+            android:id="@+id/relHeader"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+
+            >
+            <ImageView
+                android:id="@+id/backImg"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_left"
+                android:tint="@android:color/white"
+                />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dp"
+                android:text="Add Event"
+                android:layout_toRightOf="@id/backImg"
+                android:textColor="@android:color/white"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imgaddnew"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_add"
+                android:visibility="gone"
+                android:tint="@android:color/white"
+                />
+
+            <!--<RelativeLayout
+                android:id="@+id/relCart"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/imgCart"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/ic_shopping_cart_black_24dp"
+                    android:tint="@color/white"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvQty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/circle_white"
+                    android:gravity="center"
+                    android:paddingLeft="7.5dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="7.5dp"
+                    android:paddingBottom="3dp"
+                    android:text="0"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="8dp"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
+            </RelativeLayout>-->
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Event"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edtmobilNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Title"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="15dp" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtPwd"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Event Description"
+                android:inputType="text"
+                android:gravity="top"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+               />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtConPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Cost"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+                android:maxLength="10"/>
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload event Image"
+        android:layout_marginTop="12dp"/>
+    <com.events.RoundRectCornerImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="6dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/noimages"
+        />
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Add Event"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
