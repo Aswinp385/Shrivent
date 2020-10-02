@@ -7,12 +7,18 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     AppCompatButton loginBtn;
     TextView forgotPasstxt,signuptxt;
-    EditText userNm;
+    EditText userNm,password;
+    LoadingView loadingView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +29,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgotPasstxt = findViewById(R.id.tvforgtPassword);
         signuptxt = findViewById(R.id.tvSignup);
         userNm = findViewById(R.id.edtUnm);
-
+        password = findViewById(R.id.edtPwd);
+        loadingView = new LoadingView(LoginActivity.this);
 
         loginBtn.setOnClickListener(this);
         forgotPasstxt.setOnClickListener(this);
@@ -38,8 +45,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(new Intent(this, AdminActivity.class));
                     finish();
                 }else {
-                    startActivity(new Intent(this, MainActivity.class));
-                    finish();
+                    loginUser();
+//                    startActivity(new Intent(this, MainActivity.class));
+//                    finish();
                 }
                 break;
             case R.id.tvforgtPassword:
@@ -51,5 +59,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 break;
         }
+    }
+
+
+    private void loginUser() {
+        loadingView.showLoadingView();
+
+        String email = userNm.getText().toString();
+        String pass  = password.getText().toString();
+
+        RetrofitAPI getResponse = API.getClient().create(RetrofitAPI.class);
+
+        Call<LoginResp> call = getResponse.LoginUrl(email,pass);
+        call.enqueue(new Callback<LoginResp>() {
+            @Override
+            public void onResponse(Call<LoginResp> call, Response<LoginResp> response) {
+                loadingView.hideLoadingView();
+                if(response.code()==200){
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+
+//                    Toast.makeText(LoginActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResp> call, Throwable t) {
+                loadingView.hideLoadingView();
+            }
+        });
     }
 }
