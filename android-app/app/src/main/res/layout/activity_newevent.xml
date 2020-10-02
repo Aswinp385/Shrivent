@@ -119,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/edtmobilNum"
+                android:id="@+id/edteventTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Event Title"
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/edtPwd"
+                android:id="@+id/edteventdesc"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:hint="Event Description"
@@ -171,7 +171,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/edtConPwd"
+                android:id="@+id/edteventcost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Event Cost"
@@ -183,12 +183,42 @@
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
-    <TextView
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edteventlocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Location"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+                android:maxLength="10"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/eventdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12/10/2020"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:id="@+id/eventtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10:00 - 12:00"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Upload event Image"
         android:layout_marginTop="12dp"/>
-    <com.events.RoundRectCornerImageView
+    <com.develop.eventmanagement.RoundRectCornerImageView
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="6dp"
@@ -197,6 +227,7 @@
         />
 
     <android.support.v7.widget.AppCompatButton
+        android:id="@+id/addeventBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
