@@ -15,6 +15,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements OnEventClickInterface {
 
@@ -22,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements OnEventClickInter
     EventAdapter eAdapter;
     OnEventClickInterface onEventClickInterface = this;
     ImageView addeventImg,exitImg;
+    List<EventRespModel> list = new ArrayList<>();
+    LoadingView loadingView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +45,9 @@ public class MainActivity extends AppCompatActivity implements OnEventClickInter
         recycler.setItemAnimator(new DefaultItemAnimator());
         eAdapter = new EventAdapter(onEventClickInterface);
         recycler.setAdapter(eAdapter);
+        loadingView = new LoadingView(MainActivity.this);
 
+        getEventList();
 
         addeventImg.setVisibility(View.GONE);
 
@@ -46,6 +58,32 @@ public class MainActivity extends AppCompatActivity implements OnEventClickInter
             }
         });
 
+    }
+
+    private void getEventList() {
+
+        RetrofitAPI getResponse = API.getClient().create(RetrofitAPI.class);
+
+        Call<List<EventRespModel>> call = getResponse.getEventList();
+        call.enqueue(new Callback<List<EventRespModel>>() {
+            @Override
+            public void onResponse(Call<List<EventRespModel>> call, Response<List<EventRespModel>> response) {
+                loadingView.hideLoadingView();
+                if(response.code()==200){
+                    list = response.body();
+                    eAdapter.addList(list);
+                    eAdapter.notifyDataSetChanged();
+//                    Toast.makeText(LoginActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<EventRespModel>> call, Throwable t) {
+                loadingView.hideLoadingView();
+            }
+        });
     }
 
 
@@ -86,8 +124,20 @@ public class MainActivity extends AppCompatActivity implements OnEventClickInter
 
         TextView title = mBottomSheetDialog.findViewById(R.id.item_title);
         TextView description = mBottomSheetDialog.findViewById(R.id.item_description);
+        TextView date = mBottomSheetDialog.findViewById(R.id.item_date);
+        TextView time = mBottomSheetDialog.findViewById(R.id.item_time);
+        TextView guest = mBottomSheetDialog.findViewById(R.id.item_guest);
         RoundRectCornerImageView image = mBottomSheetDialog.findViewById(R.id.item_img);
         AppCompatButton submit   = mBottomSheetDialog.findViewById(R.id.dialog_close);
+
+
+        title.setText(list.get(pos).getTitle());
+        description.setText(list.get(pos).getDescription());
+        date.setText(list.get(pos).getDate());
+        time.setText(list.get(pos).getTime());
+        guest.setText(list.get(pos).getGuest());
+
+
 
 
         submit.setOnClickListener(new View.OnClickListener() {
