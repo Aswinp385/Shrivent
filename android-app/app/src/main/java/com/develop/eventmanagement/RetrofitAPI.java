@@ -36,6 +36,7 @@ public interface RetrofitAPI {
             @Field("email") String username, @Field("password") String password
     );
 
+
     @FormUrlEncoded
     @POST("authentication/registration")
     Call<SignUpResp> createAccount(@Field("first_name") String fname,
@@ -43,6 +44,7 @@ public interface RetrofitAPI {
                                    @Field("email") String email,
                                    @Field("password") String pass,
                                    @Field("phone") String mobile);
+
 
     @FormUrlEncoded
     @POST("events/eventpost")
@@ -56,3 +58,4 @@ public interface RetrofitAPI {
     @GET("events/eventlist")
     Call<List<EventRespModel>> getEventList();
 }
+

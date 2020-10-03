@@ -30,7 +30,7 @@
                     android:gravity="center"
                     android:layout_weight=".70"
                     >
-                    <com.events.RoundRectCornerImageView
+                    <com.develop.eventmanagement.RoundRectCornerImageView
                         android:id="@+id/userimg"
                         android:layout_width="100dp"
                         android:layout_height="70dp"
