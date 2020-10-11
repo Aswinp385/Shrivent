@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="err_empty">Should not be empty.</string>
+    <string name="err_email_valid">Invalid email address!</string>
+    <string name="err_mobile_valid">Special characters not allowed.</string>
+    <string name="err_pass_length">Password must be between 6-10 characters</string>
+    <string name="err_special_characters">Special characters not allowed.</string>
+    <string name="err_internet">Please check your internet connection</string>
+    <string name="err_pass_match">Retype password and actual password do not match.</string>
+    <string name="info_login">You should login to access this feature.</string>
+    <string name="err_network">Network Error</string>
+</resources>

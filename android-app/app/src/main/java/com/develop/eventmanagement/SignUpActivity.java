@@ -45,12 +45,38 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnSignup:
-                createAccount();
+                if(validation()) {
+                    createAccount();
+                }
                 break;
             case R.id.tvBack:
                 onBackPressed();
                 break;
         }
+    }
+
+
+    private boolean validation() {
+        if(Validation.checkIsEmpty(fNameEdt)){
+            Toast.makeText(SignUpActivity.this, "Please enter the First Name", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(Validation.checkIsEmpty(lastNameEdt)){
+            Toast.makeText(SignUpActivity.this, "Please enter the Last Name", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(Validation.checkIsEmpty(emailEdt)){
+            Toast.makeText(SignUpActivity.this, "Please enter the Email", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(!Validation.checkIsAnEmail(emailEdt)){
+            Toast.makeText(SignUpActivity.this, "Please Enter a valid email", Toast.LENGTH_SHORT).show();
+            return false;
+        }if(Validation.checkIsEmpty(passEdt)){
+            Toast.makeText(SignUpActivity.this, "Please enter the password", Toast.LENGTH_SHORT).show();
+            return false;
+        }if(Validation.checkIsEmpty(mobileEdt)){
+            Toast.makeText(SignUpActivity.this, "Please enter the Mobile Number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     private void createAccount() {
