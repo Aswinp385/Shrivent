@@ -50,7 +50,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
         }
     }
 
-
+    public void clearAll() {
+        if(list!=null)
+            list.clear();
+        notifyDataSetChanged();
+    }
 
     public void addData(EventRespModel data) {
 

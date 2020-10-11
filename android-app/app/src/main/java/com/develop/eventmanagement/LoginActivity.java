@@ -41,14 +41,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnLogin:
-                if(userNm.getText().toString().equalsIgnoreCase("admin")){
-                    startActivity(new Intent(this, AdminActivity.class));
-                    finish();
-                }else {
-                    loginUser();
-//                    startActivity(new Intent(this, MainActivity.class));
-//                    finish();
+
+                if(validation()){
+                    if(userNm.getText().toString().equalsIgnoreCase("admin")){
+                        startActivity(new Intent(this, AdminActivity.class));
+                        finish();
+                    }else {
+                        loginUser();
+
+                    }
                 }
+
+
+
                 break;
             case R.id.tvforgtPassword:
                 startActivity(new Intent(this,ForgotPassActivity.class));
@@ -59,6 +64,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 break;
         }
+    }
+
+    private boolean validation() {
+        if(Validation.checkIsEmpty(userNm)){
+            Toast.makeText(LoginActivity.this, "Please enter the email", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(!Validation.checkIsAnEmail(userNm)){
+            Toast.makeText(LoginActivity.this, "Please Enter a valid email", Toast.LENGTH_SHORT).show();
+            return false;
+        }if(Validation.checkIsEmpty(password)){
+            Toast.makeText(LoginActivity.this, "Please enter the password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
 

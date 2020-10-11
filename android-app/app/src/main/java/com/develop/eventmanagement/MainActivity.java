@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements OnEventClickInter
     ImageView addeventImg,exitImg;
     List<EventRespModel> list = new ArrayList<>();
     LoadingView loadingView;
+    SwipeRefreshLayout swipeToRefresh;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements OnEventClickInter
         eAdapter = new EventAdapter(onEventClickInterface);
         recycler.setAdapter(eAdapter);
         loadingView = new LoadingView(MainActivity.this);
-
+        swipeToRefresh = findViewById(R.id.swipeToRefresh);
         getEventList();
 
         addeventImg.setVisibility(View.GONE);
@@ -55,6 +57,15 @@ public class MainActivity extends AppCompatActivity implements OnEventClickInter
             @Override
             public void onClick(View view) {
                 logout();
+            }
+        });
+
+        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeToRefresh.setRefreshing(false);
+                getEventList();
+
             }
         });
 
@@ -70,6 +81,10 @@ public class MainActivity extends AppCompatActivity implements OnEventClickInter
             public void onResponse(Call<List<EventRespModel>> call, Response<List<EventRespModel>> response) {
                 loadingView.hideLoadingView();
                 if(response.code()==200){
+
+                    list = new ArrayList<>();
+                    eAdapter.clearAll();
+
                     list = response.body();
                     eAdapter.addList(list);
                     eAdapter.notifyDataSetChanged();
