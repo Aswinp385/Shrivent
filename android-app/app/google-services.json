@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "539722815136",
+    "firebase_url": "https://shrivent-c254a.firebaseio.com",
+    "project_id": "shrivent-c254a",
+    "storage_bucket": "shrivent-c254a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539722815136:android:58b9953dc82c4bf9899bc5",
+        "android_client_info": {
+          "package_name": "com.develop.eventmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539722815136-e4i65lg0ka7o3g2bdqnhuqfrf4i01982.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJQxSMwfIcjMFeFhbmn2FNQPaVrUYEYEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539722815136-e4i65lg0ka7o3g2bdqnhuqfrf4i01982.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
